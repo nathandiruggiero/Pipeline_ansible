@@ -1,0 +1,36 @@
+---
+- name: installation Nginx & git
+  hosts: inventory
+  gather_facts: yes
+  become: yes
+
+  tasks: 
+    - name: "apt-get update"
+      apt:
+         update_cache: yes
+         cache_valid_time: 3600
+         
+    - name: Installation Nginx 
+      apt: 
+        name: ['nginx']
+        update_cache: yes
+    
+    - name: Install git
+      apt: 
+        name: git
+        state: present
+        update_cache: yes
+
+    - name: Récupération dépot git
+      git:
+        repo: https://github.com/j0h3/cours_ynov.git
+        dest: /var/www/html/
+        clone: yes
+
+  hanlers:
+    - name: restart Nginx
+      service: 
+        name: nginx
+        state: restarted
+
+  
