@@ -23,7 +23,7 @@
 
     - name: Récupération dépot git
       git:
-        repo: https://github.com/j0h3/cours_ynov.git
+        repo: https://github.com/nathandiruggiero/web
         dest: /var/www/html/
         clone: yes
 
