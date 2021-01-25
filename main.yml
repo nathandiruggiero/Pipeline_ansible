@@ -27,7 +27,7 @@
         dest: /var/www/html/
         clone: yes
 
-  hanlers:
+  handlers:
     - name: restart Nginx
       service: 
         name: nginx
